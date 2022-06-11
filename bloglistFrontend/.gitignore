@@ -1,0 +1,3 @@
+build
+cypress/videos/
+node_modules

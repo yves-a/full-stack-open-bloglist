@@ -1,0 +1,44 @@
+GET http://localhost:3003/api/blogs/
+authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inl2ZXMiLCJpZCI6IjYyODU3ODBhNTljM2I2NzVjOGZhMGRmOSIsImlhdCI6MTY1Mjk4MDQwNSwiZXhwIjoxNjUyOTg0MDA1fQ.MD2TPVSMaU5gN5fnbXE0V1ar0Z65yFqoq3IgCGW7iLs
+###
+POST http://localhost:3003/api/blogs HTTP/1.1
+content-type: application/json
+authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inl2ZXMiLCJpZCI6IjYyODU3ODBhNTljM2I2NzVjOGZhMGRmOSIsImlhdCI6MTY1Mjk4MDQwNSwiZXhwIjoxNjUyOTg0MDA1fQ.MD2TPVSMaU5gN5fnbXE0V1ar0Z65yFqoq3IgCGW7iLs
+
+{
+    "title": "fourth",
+    "author": "hi",
+    "url": "what.com",
+    "likes": 122
+}
+
+###
+DELETE http://localhost:3003/api/blogs/6289d3785e247adc7164152f
+authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inl2ZXMiLCJpZCI6IjYyODU3ODBhNTljM2I2NzVjOGZhMGRmOSIsImlhdCI6MTY1Mzk2MjExMSwiZXhwIjoxNjUzOTY1NzExfQ.o8Xew3D6xX-gC6xTaypSB2DY5prwytzo1R83SxHUtIY
+
+###
+PUT http://localhost:3003/api/blogs/6283d1285ac144de2fa7dfef HTTP/1.1
+content-type: application/json
+
+{
+    "likes": 150
+}
+
+###
+POST http://localhost:3003/api/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "yves",
+    "password": "hello"
+}
+
+###
+POST http://localhost:3003/api/users HTTP/1.1
+content-type: application/json
+
+{
+    "username": "second",
+    "name": "sec",
+    "password": "second"
+}
