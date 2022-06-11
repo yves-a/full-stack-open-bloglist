@@ -24,6 +24,8 @@ jobs:
           node-version: '16'
       - name: npm install
         run: npm install && cd bloglistFrontend && npm install
+      - name: install dotenv
+        rung: npm install dotenv --save
       - name: lint
         run: npm run eslint
       - name: test backend
