@@ -24,6 +24,12 @@ jobs:
           node-version: '16'
       - name: npm install
         run: npm install && cd bloglistFrontend && npm install
+      - name: cypress install
+        run: npm install cypress --save-dev
+        run: npm install cypress --save-dev && cd bloglistFrontend && npm install cypress --save-dev
+      - name: cypress eslint install
+        run: npm install eslint-plugin-cypress --save-dev
+        run: npm install eslint-plugin-cypress --save-dev && cd bloglistFrontend && npm install eslint-plugin-cypress --save-dev  
       - name: lint
         run: npm run eslint
       - name: test backend
