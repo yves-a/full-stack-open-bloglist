@@ -18,7 +18,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react', 'jest', 'cypress'],
+  plugins: ['react', 'jest'],
   rules: {
     indent: ['error', 2],
     'linebreak-style': ['error', 'unix'],
@@ -36,8 +36,5 @@ module.exports = {
     react: {
       version: 'detect',
     },
-  },
-  globals: {
-    cy: true,
   },
 }
