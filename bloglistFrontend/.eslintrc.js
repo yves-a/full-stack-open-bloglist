@@ -37,4 +37,10 @@ module.exports = {
       version: 'detect',
     },
   },
+  {
+    "globals": {
+      "cy": true
+    }
+  },
+  
 }
