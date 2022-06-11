@@ -6,7 +6,6 @@ import Blog from '../components/Blog'
 import axios from 'axios'
 import BlogForm from '../components/BlogForm'
 
-
 const blog = {
   title: 'First class tests',
   author: 'Robert C. Martin',
@@ -21,7 +20,6 @@ const setBlogs = (added) => {
 jest.mock('axios')
 
 test('renders content', () => {
-
   render(<Blog blog={blog} />)
 
   const title = screen.getByText(`${blog.title} ${blog.author}`)
@@ -35,13 +33,17 @@ test('clicking the button shows the url and likes', async () => {
   const container = screen.getByText(`${blog.title} ${blog.author}`)
   const button = screen.getByText('view')
   await user.click(button)
-  expect(container).toHaveTextContent(`${blog.title} hide ${blog.url} ${blog.likes} like ${blog.author} delete`)
+  expect(container).toHaveTextContent(
+    `${blog.title} hide ${blog.url} ${blog.likes} like ${blog.author} delete`
+  )
 })
 
 test('clicking the like button twice', async () => {
   setBlogs(blog)
   const mockHandler = jest.fn()
-  render(<Blog blog={blog} blogs={blogs} setBlogs={setBlogs} update={mockHandler}/>)
+  render(
+    <Blog blog={blog} blogs={blogs} setBlogs={setBlogs} update={mockHandler} />
+  )
 
   const user = userEvent.setup()
   const button = screen.getByText('view')
@@ -52,7 +54,6 @@ test('clicking the like button twice', async () => {
   axios.put.mockResolvedValue(blog)
   await user.click(likeButton)
 
-
   expect(mockHandler.mock.calls).toHaveLength(2)
 })
 
@@ -60,7 +61,7 @@ test('<BlogForm /> updates parent state and calls onSubmit', async () => {
   const createBlog = jest.fn()
   const user = userEvent.setup()
 
-  render(<BlogForm addBlog={createBlog}/>)
+  render(<BlogForm addBlog={createBlog} />)
 
   const title = screen.getByPlaceholderText('title')
   const author = screen.getByPlaceholderText('author')
@@ -78,5 +79,5 @@ test('<BlogForm /> updates parent state and calls onSubmit', async () => {
   await user.click(sendButton)
 
   expect(createBlog.mock.calls).toHaveLength(1)
-  expect(createBlog.mock.calls[0][0].title).toBe('testing a form...' )
+  expect(createBlog.mock.calls[0][0].title).toBe('testing a form...')
 })

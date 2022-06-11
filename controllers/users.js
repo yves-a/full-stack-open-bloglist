@@ -8,18 +8,18 @@ usersRouter.post('/', async (request, response) => {
   const existingUser = await User.findOne({ username })
   if (existingUser) {
     return response.status(400).json({
-      error: 'username must be unique'
+      error: 'username must be unique',
     })
   }
-  if (password.length <3){
+  if (password.length < 3) {
     return response.status(400).json({
-      error: 'password must be longer than 3 characters'
+      error: 'password must be longer than 3 characters',
     })
   }
 
-  if (username.length <3){
+  if (username.length < 3) {
     return response.status(400).json({
-      error: 'username must be longer than 3 characters'
+      error: 'username must be longer than 3 characters',
     })
   }
   const saltRounds = 10
@@ -37,8 +37,12 @@ usersRouter.post('/', async (request, response) => {
 })
 
 usersRouter.get('/', async (request, response) => {
-  const users = await User
-    .find({}).populate('blogs', { title: 1, author: 1, url: 1, likes: 1 })
+  const users = await User.find({}).populate('blogs', {
+    title: 1,
+    author: 1,
+    url: 1,
+    likes: 1,
+  })
   response.json(users)
 })
 

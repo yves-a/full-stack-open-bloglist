@@ -1,16 +1,16 @@
-describe('Blog app', function() {
-  beforeEach(function() {
+describe('Blog app', function () {
+  beforeEach(function () {
     cy.wait(1000)
     cy.request('POST', 'http://localhost:3003/api/testing/reset')
     const user = {
       name: 'yves',
       username: 'yves',
-      password: 'test'
+      password: 'test',
     }
     cy.request('POST', 'http://localhost:3003/api/users/', user)
     cy.visit('http://localhost:3000')
   })
-  it('Login form is shown', function() {
+  it('Login form is shown', function () {
     cy.get('#username').type('yves')
     cy.get('#password').type('test')
     cy.get('#login-button').click()
@@ -18,15 +18,15 @@ describe('Blog app', function() {
     cy.contains('yves logged-in')
   })
 
-  describe('Login',function() {
-    it('succeeds with correct credentials', function() {
+  describe('Login', function () {
+    it('succeeds with correct credentials', function () {
       cy.get('#username').type('yves')
       cy.get('#password').type('test')
       cy.get('#login-button').click()
       cy.contains('yves logged-in')
     })
 
-    it('fails with wrong credentials', function() {
+    it('fails with wrong credentials', function () {
       cy.get('#username').type('yves')
       cy.get('#password').type('wrong')
       cy.get('#login-button').click()
@@ -34,17 +34,21 @@ describe('Blog app', function() {
       cy.get('.error').should('have.css', 'color', 'rgb(255, 0, 0)')
     })
   })
-  describe('When logged in', function() {
-    beforeEach(function() {
+  describe('When logged in', function () {
+    beforeEach(function () {
       cy.request('POST', 'http://localhost:3003/api/login', {
-        username: 'yves', password: 'test'
-      }).then(response => {
-        localStorage.setItem('loggedBloglistUser', JSON.stringify(response.body))
+        username: 'yves',
+        password: 'test',
+      }).then((response) => {
+        localStorage.setItem(
+          'loggedBloglistUser',
+          JSON.stringify(response.body)
+        )
         cy.visit('http://localhost:3000')
       })
     })
 
-    it('A blog can be created', function() {
+    it('A blog can be created', function () {
       cy.contains('new blog').click()
       cy.get('#title').type('new1')
       cy.get('#author').type('yves')
@@ -53,7 +57,7 @@ describe('Blog app', function() {
       cy.get('#save').click()
     })
 
-    it('A blog can be liked', function() {
+    it('A blog can be liked', function () {
       cy.contains('new blog').click()
       cy.get('#title').type('new1')
       cy.get('#author').type('yves')
@@ -65,7 +69,7 @@ describe('Blog app', function() {
       cy.get('#likeButton').click()
     })
 
-    it('A blog can be deleted', function() {
+    it('A blog can be deleted', function () {
       cy.contains('new blog').click()
       cy.get('#title').type('new1')
       cy.get('#author').type('yves')
@@ -76,7 +80,7 @@ describe('Blog app', function() {
       cy.wait(1000)
       cy.get('#deleteButton').click()
     })
-    it('Blogs are sorted by most likes', function() {
+    it('Blogs are sorted by most likes', function () {
       cy.contains('new blog').click()
       cy.get('#title').type('least liked')
       cy.get('#author').type('yves')
@@ -95,5 +99,4 @@ describe('Blog app', function() {
       cy.get('.blog').eq(1).should('contain', 'least liked')
     })
   })
-
 })

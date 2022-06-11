@@ -36,7 +36,6 @@ app.get('/health', (req, res) => {
 
 if (process.env.NODE_ENV === 'test') {
   const testingRouter = require('./controllers/testing')
-  console.log('yooo')
   app.use('/api/testing', testingRouter)
 }
 
