@@ -26,6 +26,8 @@ jobs:
         run: npm install
       - name: cypress install
         run: npm install cypress --save-dev
+      - name: cypress eslint install
+        run: npm install eslint-plugin-cypress --save-dev
       - name: lint
         run: npm run eslint
       - name: test backend
