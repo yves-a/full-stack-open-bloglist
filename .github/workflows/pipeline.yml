@@ -24,6 +24,8 @@ jobs:
           node-version: '16'
       - name: npm install
         run: npm install
+      - name: cypress install
+        run: npm install cypress --save-dev
       - name: lint
         run: npm run eslint
       - name: test backend
