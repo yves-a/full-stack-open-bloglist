@@ -42,3 +42,11 @@ content-type: application/json
     "name": "sec",
     "password": "second"
 }
+
+
+###
+POST http://localhost:3003/api/testing/reset HTTP/1.1
+content-type: application/json
+
+{
+}

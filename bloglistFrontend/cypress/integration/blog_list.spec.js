@@ -1,3 +1,4 @@
+/* eslint-disable cypress/no-unnecessary-waiting */
 describe('Blog app', function () {
   beforeEach(function () {
     cy.wait(1000)

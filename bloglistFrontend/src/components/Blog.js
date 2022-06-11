@@ -38,7 +38,7 @@ const Blog = ({ blog, blogs, setBlogs, update }) => {
 
   if (blogState) {
     return (
-      <div style={blogStyle}>
+      <div style={blogStyle} className="blog">
         <div>
           {blog.title} <button onClick={toggleBlogState}> hide </button>
           <br /> {blog.url} <br />
