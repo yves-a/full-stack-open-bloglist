@@ -35,5 +35,12 @@
   },
   "jest": {
     "testEnvironment": "node"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:cypress/recommended"
+    ]
   }
 }
